@@ -1,5 +1,6 @@
 package com.example.connect_services
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -40,8 +42,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -67,9 +72,14 @@ fun MyApp() {
 
     ConnectServicesTheme(darkTheme = isDarkTheme) {
         Scaffold(
-            topBar = { TopBar(id = R.string.user_list,onToggleTheme = { isDarkTheme = !isDarkTheme }, showBackButton = false) },
-            floatingActionButton = { FAButton() },
-            modifier = Modifier.fillMaxSize()
+            topBar = { TopBar(id = R.string.user_list, onToggleTheme = { isDarkTheme = !isDarkTheme }, showBackButton = false) },
+            floatingActionButton = {
+                FAButton(
+                    modifier = Modifier
+                        .padding(25.dp)
+                        .size(80.dp)
+                )
+            }
         ) { innerPadding ->
             Greeting(
                 modifier = Modifier.padding(innerPadding)
@@ -154,16 +164,31 @@ fun Greeting(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun FAButton() {
+fun FAButton(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+
     FloatingActionButton(
-        onClick = { /*TODO*/ }
-    ) {
-        Icon(Icons.Filled.Add, "Floating action button.")
-    }
+        onClick = {
+            val intent = Intent(context, CreateAccountActivity::class.java)
+            context.startActivity(intent)
+        },
+        content = {
+            Icon(
+                painter = painterResource(id = R.drawable.baseline_add_24),
+                contentDescription = stringResource(id = R.string.add),
+                tint = MaterialTheme.colorScheme.onPrimary,
+                modifier = Modifier.scale(1.8f)
+            )
+        },
+        modifier = modifier
+    )
 }
+
+@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun GreetingPreview2() {
     ConnectServicesTheme {
-        Greeting()
+        //StartActivityScreen()
     }
 }
+
