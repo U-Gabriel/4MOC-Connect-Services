@@ -72,7 +72,7 @@ fun MyApp() {
 
     ConnectServicesTheme(darkTheme = isDarkTheme) {
         Scaffold(
-            topBar = { TopBar(id = R.string.user_list, onToggleTheme = { isDarkTheme = !isDarkTheme }, showBackButton = false) },
+            topBar = { TopBar(id = R.string.account_list, onToggleTheme = { isDarkTheme = !isDarkTheme }, showBackButton = false) },
             floatingActionButton = {
                 FAButton(
                     modifier = Modifier
@@ -90,19 +90,19 @@ fun MyApp() {
 
 data class ListItem(val name: String, val icon: ImageVector)
 val itemsList = listOf(
-    ListItem(name = "Item 1", icon = Icons.Default.Favorite),
-    ListItem(name = "Item 2", icon = Icons.Default.Home),
-    ListItem(name = "Item 3", icon = Icons.Default.Settings),
-    ListItem(name = "Item 4", icon = Icons.Default.Person),
-    ListItem(name = "Item 5", icon = Icons.Default.Phone),
-    ListItem(name = "Item 6", icon = Icons.Default.Email),
-    ListItem(name = "Item 7", icon = Icons.Default.Info),
-    ListItem(name = "Item 8", icon = Icons.Default.Warning),
-    ListItem(name = "Item 9", icon = Icons.Default.Search),
-    ListItem(name = "Item 10", icon = Icons.Default.Favorite),
-    ListItem(name = "Item 11", icon = Icons.Default.Home),
-    ListItem(name = "Item 12", icon = Icons.Default.Settings),
-    ListItem(name = "Item 13", icon = Icons.Default.Person),
+    ListItem(name = "Google", icon = Icons.Default.Favorite),
+    ListItem(name = "Snapchat", icon = Icons.Default.Home),
+    ListItem(name = "Instagram", icon = Icons.Default.Settings),
+    ListItem(name = "Gmail", icon = Icons.Default.Person),
+    ListItem(name = "MyGES", icon = Icons.Default.Phone),
+    ListItem(name = "CIC", icon = Icons.Default.Email),
+    ListItem(name = "CA", icon = Icons.Default.Info),
+    ListItem(name = "H&M", icon = Icons.Default.Warning),
+    ListItem(name = "ZARA", icon = Icons.Default.Search),
+    ListItem(name = "Apple", icon = Icons.Default.Favorite),
+    ListItem(name = "Microsoft", icon = Icons.Default.Home),
+    ListItem(name = "Celio", icon = Icons.Default.Settings),
+    ListItem(name = "Amazon", icon = Icons.Default.Person),
 )
 
 @Composable
